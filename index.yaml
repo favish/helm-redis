@@ -1,0 +1,15 @@
+apiVersion: v1
+entries:
+  redis:
+  - apiVersion: v1
+    created: 2021-11-19T22:10:10.3744003Z
+    description: Simple redis setup without clustering.
+    digest: 2b1ffd98c5af5004f688cdef8a98f3173069042eb2270d99337418e5a4862466
+    maintainers:
+    - email: dev@favish.com
+      name: Favish
+    name: redis
+    urls:
+    - https://favish.github.com/helm-redis/redis-1.0.1.tgz
+    version: 1.0.1
+generated: 2021-11-19T22:10:10.374085556Z
