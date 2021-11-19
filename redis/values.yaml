@@ -1,0 +1,12 @@
+metrics:
+  enabled: false
+  resources:
+    requests:
+      memory: 10M
+      cpu: 1m
+resources:
+  requests:
+    memory: 50M
+    cpu: 20m
+# Args should be an array of arguments to get passed to the container.  Good way to set extra configuration.
+args: ["--maxmemory 50mb", "--maxmemory-policy allkeys-lfu"]
