@@ -1,0 +1,17 @@
+{{- if .Values.metrics.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: redis-podmonitor
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      service: redis
+  podMetricsEndpoints:
+    - port: metrics
+  namespaceSelector:
+    matchNames:
+      - default
+{{- end }}
