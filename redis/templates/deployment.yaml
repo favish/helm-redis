@@ -16,11 +16,6 @@ spec:
       service: "redis"
   template:
     metadata:
-      annotations:
-        {{ if .Values.metrics.enabled }}
-        prometheus.io.scrape: "true"
-        prometheus.io.port: "9121"
-        {{ end }}
       labels:
         service: "redis"
     spec:
@@ -65,7 +60,8 @@ spec:
         - name: "redis-exporter"
           image: "oliver006/redis_exporter:v0.14"
           ports:
-          - containerPort: 9121
+          - name: metrics
+            containerPort: 9121
           resources:
 {{ toYaml .Values.metrics.resources | indent 12 }}
         {{ end }}
