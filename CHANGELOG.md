@@ -7,3 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2021-11-19
 ### Added
 - Initial release.
+
+## [1.0.3] - 2025-02-11
+### Fix monitoring
+- Use modern PodMonitor CRD for discoverabilioty by prometheus. 
