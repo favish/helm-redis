@@ -2,7 +2,49 @@
 
 ## Usage
 
-TBD.
+To install as a dependency chart, add the following to your `requirements.yaml`, or `Chart.yaml`:
+
+```yaml
+dependencies:
+  - name: redis
+    repository: https://favish.github.io/helm-redis
+    version: 1.1.0
+```
+
+Update the `values.yaml` for configuration options.
+
+```yaml
+redis:
+  image:
+    repository: redis
+    tag: "4-alpine"
+  redisExporter:
+    image:
+      repository: "oliver006/redis_exporter"
+      tag: "v0.14"
+  metrics:
+    enabled: false
+  resources:
+    requests:
+      cpu: 100m
+      memory: 1G
+  args: ["--maxmemory 50mb", "--maxmemory-policy allkeys-lfu"]
+```
+
+NOTE: make sure to pair Redis image version with appropriate Redis metrics export version. Visit https://github.com/oliver006/redis_exporter for more information.
+
+By the way, if you want to use Redis 7, these images should fit:
+
+```yaml
+redis:
+  image:
+    repository: redis
+    tag: "7-alpine"
+  redisExporter:
+    image:
+      repository: "oliver006/redis_exporter"
+      tag: "v1.67.0"
+```
 
 ## Contributing
 
