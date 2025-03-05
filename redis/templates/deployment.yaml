@@ -43,7 +43,7 @@ spec:
         - name: "redis"
           resources:
 {{ toYaml .Values.resources | indent 12 }}
-          image: "redis:4-alpine"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default "4-alpine" }}"
           {{ if .Values.args }}
           args:
 {{ toYaml .Values.args | indent 12 }}
@@ -58,7 +58,7 @@ spec:
         # Exporter suggested from prometheus docs: https://prometheus.io/docs/instrumenting/exporters/
         # Prometheus, in weave-cloud, will discover this via polling the service which is created below.
         - name: "redis-exporter"
-          image: "oliver006/redis_exporter:v0.14"
+          image: "{{ .Values.redisExporter.image.repository }}:{{ .Values.redisExporter.image.tag | default "v0.14" }}"
           ports:
           - name: metrics
             containerPort: 9121
