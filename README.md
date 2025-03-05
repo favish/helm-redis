@@ -1,4 +1,4 @@
-# Redis Helm chart for internal use
+# Redis Helm chart
 
 ## Usage
 
