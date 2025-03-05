@@ -31,6 +31,12 @@ redis:
   args: ["--maxmemory 50mb", "--maxmemory-policy allkeys-lfu"]
 ```
 
+Do not forget to execute this command to download the dependencies for the main Helm chart.
+
+```
+helm dependency update
+```
+
 NOTE: make sure to pair Redis image version with appropriate Redis metrics export version. Visit https://github.com/oliver006/redis_exporter for more information.
 
 By the way, if you want to use Redis 7, these images should fit:
