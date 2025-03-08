@@ -54,7 +54,7 @@ redis:
 
 ## Values
 
-Check out [values.yaml](values.yaml) for all available options.
+Check out [values.yaml](redis/values.yaml) for all available options.
 
 ## Contributing
 
