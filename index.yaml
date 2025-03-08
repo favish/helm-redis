@@ -2,7 +2,18 @@ apiVersion: v1
 entries:
   redis:
   - apiVersion: v1
-    created: 2025-03-08T00:47:23.599775237Z
+    created: 2025-03-08T01:11:11.463204938Z
+    description: Simple redis setup without clustering.
+    digest: 811c1bbd171be3792e886a4b52a1929ca6fb2ff0a2f104d1153369a71eb00425
+    maintainers:
+    - email: dev@favish.com
+      name: Favish
+    name: redis
+    urls:
+    - https://favish.github.io/helm-redis/redis-1.1.2.tgz
+    version: 1.1.2
+  - apiVersion: v1
+    created: 2025-03-08T01:11:11.462998405Z
     description: Simple redis setup without clustering.
     digest: 4e247678985b27c4fbbc6914c872063a3b4d94625edbda4e36bb53ea0a8cafc9
     maintainers:
@@ -13,7 +24,7 @@ entries:
     - https://favish.github.io/helm-redis/redis-1.1.1.tgz
     version: 1.1.1
   - apiVersion: v1
-    created: 2025-03-08T00:47:23.599587783Z
+    created: 2025-03-08T01:11:11.462833522Z
     description: Simple redis setup without clustering.
     digest: 76e3ec327dfd8bdd227fede5a9c8e3c63070b9be6a427f05976986c744fb6afb
     maintainers:
@@ -24,7 +35,7 @@ entries:
     - https://favish.github.io/helm-redis/redis-1.1.0.tgz
     version: 1.1.0
   - apiVersion: v1
-    created: 2025-03-08T00:47:23.599406303Z
+    created: 2025-03-08T01:11:11.462655529Z
     description: Simple redis setup without clustering.
     digest: a6abf40e56f01d4c31186f25c783ab250c6015720a12c295866eb4309fa655d9
     maintainers:
@@ -35,7 +46,7 @@ entries:
     - https://favish.github.io/helm-redis/redis-1.0.3.tgz
     version: 1.0.3
   - apiVersion: v1
-    created: 2025-03-08T00:47:23.599222628Z
+    created: 2025-03-08T01:11:11.462476287Z
     description: Simple redis setup without clustering.
     digest: 63ed2af2e2304c0d4268f97e58359fb5fdbee895a79d1c176193cde914734be3
     maintainers:
@@ -46,7 +57,7 @@ entries:
     - https://favish.github.io/helm-redis/redis-1.0.2.tgz
     version: 1.0.2
   - apiVersion: v1
-    created: 2025-03-08T00:47:23.599039767Z
+    created: 2025-03-08T01:11:11.462289166Z
     description: Simple redis setup without clustering.
     digest: 2b1ffd98c5af5004f688cdef8a98f3173069042eb2270d99337418e5a4862466
     maintainers:
@@ -56,4 +67,4 @@ entries:
     urls:
     - https://favish.github.io/helm-redis/redis-1.0.1.tgz
     version: 1.0.1
-generated: 2025-03-08T00:47:23.59868558Z
+generated: 2025-03-08T01:11:11.461943295Z
