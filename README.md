@@ -52,6 +52,10 @@ redis:
       tag: "v1.67.0"
 ```
 
+## Values
+
+Check out [values.yaml](values.yaml) for all available options.
+
 ## Contributing
 
 To update the chart, please follow the steps below:
