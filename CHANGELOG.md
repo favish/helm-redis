@@ -20,3 +20,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.1.1] - 2025-03-07
 ### Added
 - Added values to enable/disable init containers.
+
+## [1.1.2] - 2025-03-07
+### Added
+- Fixed issue with `PodMonitor` is created when installing Redis chart on cluster not having Prometheus release installed.
+  - The known issue message with this issue is `Error: unable to build kubernetes objects from release manifest: resource mapping not found for name: "redis" namespace: "" from "": no matches for kind "PodMonitor" in version "monitoring.coreos.com/v1"`
