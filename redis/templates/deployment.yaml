@@ -6,10 +6,10 @@ metadata:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
 spec:
   strategy:
-      type: "RollingUpdate"
-      rollingUpdate:
-        maxSurge: 300%
-        maxUnavailable: 0
+    type: "RollingUpdate"
+    rollingUpdate:
+      maxSurge: 300%
+      maxUnavailable: 0
   replicas: 1
   selector:
     matchLabels:
@@ -19,26 +19,32 @@ spec:
       labels:
         service: "redis"
     spec:
+      {{ if .Values.initContainers.enabled }}
       initContainers:
-      - image: "alpine"
-        name: "increase-somaxconn"
-        securityContext:
-          privileged: true
-        command:
-        - "/bin/sh"
-        - "-c"
-        - "sysctl -w net.core.somaxconn=4096"
-      - name: "disable-thp"
-        image: "alpine"
-        volumeMounts:
-          - name: "host-sys"
-            mountPath: "/host-sys"
-        securityContext:
-          privileged: true
-        command:
-          - "sh"
-          - "-c"
-          - "echo madvise >/host-sys/kernel/mm/transparent_hugepage/enabled && echo madvise >/host-sys/kernel/mm/transparent_hugepage/defrag"
+      {{ if .Values.initContainers.somaxconn }}
+        - image: "alpine"
+          name: "increase-somaxconn"
+          securityContext:
+            privileged: true
+          command:
+            - "/bin/sh"
+            - "-c"
+            - "sysctl -w net.core.somaxconn=4096"
+      {{ end }}
+      {{ if .Values.initContainers.disableTHP }}
+        - name: "disable-thp"
+          image: "alpine"
+          volumeMounts:
+            - name: "host-sys"
+              mountPath: "/host-sys"
+          securityContext:
+            privileged: true
+          command:
+            - "sh"
+            - "-c"
+            - "echo madvise >/host-sys/kernel/mm/transparent_hugepage/enabled && echo madvise >/host-sys/kernel/mm/transparent_hugepage/defrag"
+      {{ end }}
+      {{ end }}
       containers:
         - name: "redis"
           resources:
@@ -49,27 +55,25 @@ spec:
 {{ toYaml .Values.args | indent 12 }}
           {{ end }}
           ports:
-          - containerPort: 6379
-            protocol: TCP
+            - containerPort: 6379
+              protocol: TCP
           volumeMounts:
             - mountPath: /redis-master-data
               name: data
         {{ if .Values.metrics.enabled }}
-        # Exporter suggested from prometheus docs: https://prometheus.io/docs/instrumenting/exporters/
-        # Prometheus, in weave-cloud, will discover this via polling the service which is created below.
         - name: "redis-exporter"
           image: "{{ .Values.redisExporter.image.repository }}:{{ .Values.redisExporter.image.tag | default "v0.14" }}"
           ports:
-          - name: metrics
-            containerPort: 9121
+            - name: metrics
+              containerPort: 9121
           resources:
 {{ toYaml .Values.metrics.resources | indent 12 }}
         {{ end }}
-      # Create an emptyDir volume for persistence through container crashes
-      # Until the need arises to do further persistence, will allow some possibility for cache resets
       volumes:
+        {{ if .Values.initContainers.disableTHP }}
         - name: "host-sys"
           hostPath:
             path: "/sys"
+        {{ end }}
         - name: data
           emptyDir: {}

@@ -16,3 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Parameterized the Redis container image and version. Default to `redis:4-alpine` for backward compatibility.
 - Parameterized the Redis exporter container image and version. Default to `oliver006/redis_exporter:v0.14` for backward compatibility.
+
+## [1.1.1] - 2025-03-07
+### Added
+- Added values to enable/disable init containers.

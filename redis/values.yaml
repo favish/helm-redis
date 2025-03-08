@@ -7,6 +7,11 @@ redisExporter:
     repository: "oliver006/redis_exporter"
     tag: "v0.14"
 
+initContainers:
+  enabled: true  # Set to false to disable all init containers
+  somaxconn: true  # Enable/disable somaxconn tuning
+  disableTHP: true  # Enable/disable THP disabling
+
 metrics:
   enabled: false
   resources:
